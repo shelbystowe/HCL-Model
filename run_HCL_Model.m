@@ -23,7 +23,8 @@ x_init = 1; % Circadian drive
 y_init = 1; % Auxilary variable 
 n_init = 1; % Proportion of activated photoreceptors 
 
-
+% Set parameter values 
+P = Set_Parameters; 
 
 
 
