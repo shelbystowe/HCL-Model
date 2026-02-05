@@ -31,8 +31,7 @@ P.beta_22     = 0.0250;
 P.beta_23     = -0.9647;
 
 % Sleep-Wake parameters
-P.Xs   = 45*60*60; % chi value during sleep, time constant for decay
-P.Xw   = 45*60*60; % chi value during wake, time constant for rise
+P.X    = 45*60*60; % chi value during sleep, time constant for decay
 P.H0p  = 13.5; % 
 P.H0m  = 12.5; % 
 P.a    = 2.72; % lower asymptote

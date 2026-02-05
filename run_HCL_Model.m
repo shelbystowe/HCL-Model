@@ -21,6 +21,5 @@ t = [0 24*n]; % hours
 P = Set_Parameters; 
 
 
+%% Call the HCL Model function to run the model
 
-
-%% 
