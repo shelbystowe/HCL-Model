@@ -17,12 +17,13 @@ P.beta    = 0.013; % decay rate of photoreceptor activation
 P.tau_c   = 24.2; % Circadian period
 
 % Circadian wake propensity rhythm parameters 
-P.c_20        = 0.7896;
-P.alpha_21    = -0.3912;
-P.alpha_22    = 0.7583;
-P.beta_21     = -0.4442;
-P.beta_22     = 0.0250;
-P.beta_23     = -0.9647;
+c_20        = 0.7896;
+alpha_21    = -0.3912;
+alpha_22    = 0.7583;
+beta_21     = -0.4442;
+beta_22     = 0.0250;
+beta_23     = -0.9647;
+
 
 % Sleep-Wake parameters
 P.Xs   = 45*60*60; % chi value during sleep, time constant for decay
