@@ -6,6 +6,8 @@ P.x_init = 1; % Circadian drive
 P.y_init = 1; % Auxilary variable 
 P.n_init = 1; % Proportion of activated photoreceptors 
 
+P.S_init = 1; 
+
 
 % SET PARAMETER VALUES
 % Circadian oscillator parameters
@@ -31,12 +33,13 @@ P.beta_22     = 0.0250;
 P.beta_23     = -0.9647;
 
 % Sleep-Wake parameters
-P.X    = 45*60*60; % chi value during sleep, time constant for decay
-P.H0p  = 13.5; % 
-P.H0m  = 12.5; % 
-P.a    = 2.72; % lower asymptote
-P.mu   = 18.67; % upper asymptote 
+P.X     = 45*60*60; % chi value during sleep, time constant for decay
+P.H0p   = 13.5; % 
+P.H0m   = 12.5; % 
+P.a     = 2.72; % lower asymptote
+P.mu    = 18.67; % upper asymptote 
 P.onoff = 0;  %If onoff=0 then in sleep state.  IF onoff=1 then in wake state. This is controlling S
+P.ca    = 1.72; % circadian amplitude
 
 % Light parameters for synthetic light profile
 P.daylight     = 700;

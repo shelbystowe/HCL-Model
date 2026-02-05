@@ -23,3 +23,8 @@ P = Set_Parameters;
 
 %% Call the HCL Model function to run the model
 
+initial_conditions =  [P.H_init; P.x_init; P.y_init; P.n_init];
+
+myODEfunction = @(t,Z)HCL_Model(t,Z,P);
+sol = ode45(myODEfunction, t, initial_conditions, P.options);
+
