@@ -1,7 +1,13 @@
 function P = Set_Parameters()
 
-% SET PARAMETER VALUES
+% SET INITIAL CONDITIONS
+P.H_init = 1; % Homeostatic drive
+P.x_init = 1; % Circadian drive 
+P.y_init = 1; % Auxilary variable 
+P.n_init = 1; % Proportion of activated photoreceptors 
 
+
+% SET PARAMETER VALUES
 % Circadian oscillator parameters
 P.alpha0  = 0.16; % modulates how light affects the fraction of activated photoreceptors
 P.I0      = 9500; % scaling factor
