@@ -13,7 +13,7 @@ x = Z(2);
 y = Z(3);
 n = Z(4);
 
-S = P.S_init;
+S = P.S_init; % S = 1 during sleep, S = 0 during wake
 
 %% Supporting Equations
 
@@ -21,19 +21,13 @@ S = P.S_init;
 C = P.c_20 + P.alpha_21*x + P.alpha_22*y + P.beta_21*x^2 + P.beta_22*x*y + P.beta_23*y^2; 
 
 % Homeostatic Drive 
-H_plus   = 13 + 1/2 + P.ca*C;
-H_minus  = 13 - 1/2 + P.ca*C;
-
-if H == H_plus % transition from wake to sleep
-    S = 1;
-    H = 1;
-elseif H == H_minus % transition from sleep to wake
-    S = 0;
-    H = 10; 
-else 
-    S = S;
-    H = H; 
-end 
+if S == 0 % if awake, stop at upper threshold
+    H_threshold   = P.H0p + C;
+    value(1)      = H-H_threshold;
+else % if asleep, stop at lower threshold
+    H_threshold   = P.H0m + C;  %if asleep, stop at lower threshold
+    value(2)      = H-H_threshold;
+end
 
 % Circadian Oscillator 
 % Build the light schedule
@@ -58,5 +52,8 @@ dzdt(1) = (1/P.X)*(-H +(1 - S)*P.mu); % dHdt, homeostatic drive
 dzdt(2) = (1/P.kappa)*(P.gamma*(x - (4/3)*x^3) - y*((24/(P.f*P.tau_c))^2 +P.k*B)); % dxdt, circadian drive 
 dzdt(3) = (1/P.kappa)*(x+B); % dydt, auxillary variable 
 dzdt(4) = P.alpha0*((I_tilde/P.I0)^P.p)*(1-n) - P.beta*n; % dndt, proportion of active photoreceptors
+
+% Check if we have switched to wake/switched to sleep
+
 
 end 

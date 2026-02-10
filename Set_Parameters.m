@@ -6,7 +6,7 @@ P.x_init = 1; % Circadian drive
 P.y_init = 1; % Auxilary variable 
 P.n_init = 1; % Proportion of activated photoreceptors 
 
-P.S_init = 1; 
+P.S_init = 1; % S = 1 during sleep, S = 0 during wake
 
 
 % SET PARAMETER VALUES
@@ -50,5 +50,7 @@ P.dusk         = 16.5*60*60;
 P.gated = 1; % 1 means that light is self-selected.
 
 P.options = odeset; % P.options = odeset( 'MaxStep', 0.9/3600);
+
+P.onoff = 0;  %If onoff=0 then in sleep state.  IF onoff=1 then in wake state.
 
 end
