@@ -1,7 +1,6 @@
 function P = Set_Parameters()
 
 % SET INITIAL CONDITIONS
-%P.H_init = 1; % Homeostatic drive
 P.x_init = 1; % Circadian drive 
 P.y_init = 1; % Auxilary variable 
 P.n_init = 1; % Proportion of activated photoreceptors 
@@ -14,7 +13,7 @@ P.p       = 0.6; % modulates the steepness of the dose response curve to light
 P.G       = 19.9; % modulates the strength of the effect of light
 P.b       = 0.4; % modulates timing of maximum light sensitivity 
 P.gamma   = 0.23; % stiffness parameter
-P.kappa   = 11*pi/12; %(12/pi)*60*60; % time scaling factor
+P.kappa   = (12/pi)*60*60; % time scaling factor
 P.f       = 0.99669; % correction factor 
 P.k       = 0.55; % modulates shape of velocity response curve
 P.lambda  = 60/(60*60); % 

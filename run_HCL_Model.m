@@ -17,7 +17,7 @@ clc
 
 % Set simulation duration
 n = 10; % days
-t = [0 24*n]; % hours
+t = [0 24*n*3600]; % seconds
 
 % Set parameter values 
 P = Set_Parameters; 
