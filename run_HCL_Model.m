@@ -70,6 +70,15 @@ ax=gca;
 ax.FontSize = 15;
 
 
+% xy-phase plane
+figure()
+plot(x, y, 'LineWidth',2);  
+title('Circadian Drive xy-plane');
+xlabel('x');
+ylabel('y');
+ax=gca;
+ax.FontSize = 15;
+
 % Proportion of Active Photoreceptors
 figure()
 plot(time, n, 'LineWidth',2);  
