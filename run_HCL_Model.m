@@ -16,7 +16,7 @@ close all
 clc
 
 % Set simulation duration
-n = 10; % days
+n = 1; % days
 t = [0 24*n*3600]; % seconds
 
 % Set parameter values 
@@ -27,21 +27,20 @@ P = Set_Parameters;
 
 initial_conditions =  [P.x_init; P.y_init; P.n_init];
 
-%myODEfunction = @(t,Z)HCL_Model(t,Z,P);
-%sol = ode45(myODEfunction, t, initial_conditions);
+% myODEfunction = @(t,Z)HCL_Model(t,Z,P);
+% sol = ode45(myODEfunction, t, initial_conditions);
 
-%dt = 1/120;
-%tStart = sol.x(1);
-%tFinal = sol.x(end);
-%time = linspace(tStart,tFinal,round((tFinal-tStart)/dt));
-%state = deval(sol,time);
+% dt = 1/120;
+% tStart = sol.x(1);
+% tFinal = sol.x(end);
+% time = linspace(tStart,tFinal,round((tFinal-tStart)/dt));
+% state = deval(sol,time);
 
 [tout, zout] = ode45(@(tout, zout)HCL_Model(tout,zout,P),t,initial_conditions);
-
-%% Assign state variable names to solution ouptuts
-
 state = zout';
 time = tout';
+
+%% Assign state variable names to solution ouptuts
 
 x = state(1,:);
 y = state(2,:);
@@ -56,7 +55,7 @@ C = P.c_20 + P.alpha_21.*x + P.alpha_22.*y + P.beta_21.*x.^2 + P.beta_22.*x.*y +
 figure()
 plot(time, x, 'LineWidth',2);  
 title('Circadian Drive (x)');
-xlabel('Time (hours)');
+xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
 
@@ -65,7 +64,7 @@ ax.FontSize = 15;
 figure()
 plot(time, y, 'LineWidth',2);  
 title('Circadian Drive Auxillary Variable (y)');
-xlabel('Time (hours)');
+xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
 
