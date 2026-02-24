@@ -1,9 +1,9 @@
 function P = Set_Parameters()
 
 % SET INITIAL CONDITIONS
-P.x_init = 0.8206; % Circadian drive 
-P.y_init = -0.6128; % Auxilary variable 
-P.n_init = 0.3720; % Proportion of activated photoreceptors 
+P.x_init = 0.8256; % Circadian drive 
+P.y_init = 0.5283; % Auxilary variable 
+P.n_init = 0.6758; % Proportion of activated photoreceptors 
 
 % SET PARAMETER VALUES
 % Circadian oscillator parameters

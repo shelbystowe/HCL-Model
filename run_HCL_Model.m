@@ -16,7 +16,7 @@ close all
 clc
 
 % Set simulation duration
-n = 1; % days
+n = 5; % days
 t = [0 24*n*3600]; % seconds
 
 % Set parameter values 
@@ -53,7 +53,9 @@ C = P.c_20 + P.alpha_21.*x + P.alpha_22.*y + P.beta_21.*x.^2 + P.beta_22.*x.*y +
 
 % Circadian Drive
 figure()
-plot(time, x, 'LineWidth',2);  
+plot(time, x, 'LineWidth',2); 
+xline(23*60*60)
+xline(7*60*60)
 title('Circadian Drive (x)');
 xlabel('Time (secs)');
 ax=gca;
@@ -63,6 +65,8 @@ ax.FontSize = 15;
 % Auxillary Variable
 figure()
 plot(time, y, 'LineWidth',2);  
+xline(23*60*60)
+xline(7*60*60)
 title('Circadian Drive Auxillary Variable (y)');
 xlabel('Time (secs)');
 ax=gca;
@@ -80,17 +84,21 @@ ax.FontSize = 15;
 
 % Proportion of Active Photoreceptors
 figure()
-plot(time, n, 'LineWidth',2);  
+plot(time, n, 'LineWidth',2); 
+xline(23*60*60)
+xline(7*60*60)
 title('Proportion of Active Photoreceptors (n)');
-xlabel('Time (hours)');
+xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
 
 
 % Circadian wake propensity rhythm
 figure()
-plot(time, C, 'LineWidth',2);  
+plot(time, C, 'LineWidth',2); 
+xline(23*60*60)
+xline(7*60*60)
 title('Circadian wake propensity rhythm (C)');
-xlabel('Time (hours)');
+xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
