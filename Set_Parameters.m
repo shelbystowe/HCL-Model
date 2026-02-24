@@ -28,7 +28,7 @@ P.beta_22     = 0.0250;
 P.beta_23     = -0.9647;
 
 % Light parameters for synthetic light profile
-P.day     = 700;
+P.day   = 700;
 P.night = 0;
 
 

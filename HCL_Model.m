@@ -26,9 +26,8 @@ for i=1:length(t)
 end
 
 I_tilde = (1-S)*I;
-B_hat = P.G*P.alpha0*((I_tilde/P.I0)^P.p)*(1-n);
-B = (1-(P.b*x))*(1-(P.b*y))*B_hat;
-
+B_hat   = P.G*P.alpha0*((I_tilde/P.I0)^P.p)*(1-n);
+B       = (1-(P.b*x))*(1-(P.b*y))*B_hat;
 
 %% Differential Equations 
 
