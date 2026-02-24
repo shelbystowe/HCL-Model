@@ -16,7 +16,7 @@ close all
 clc
 
 % Set simulation duration
-n = 5; % days
+n = 1; % days
 t = [0 24*n*3600]; % seconds
 
 % Set parameter values 
@@ -36,7 +36,7 @@ initial_conditions =  [P.x_init; P.y_init; P.n_init];
 % time = linspace(tStart,tFinal,round((tFinal-tStart)/dt));
 % state = deval(sol,time);
 
-[tout, zout] = ode45(@(tout, zout)HCL_Model(tout,zout,P),t,initial_conditions);
+[tout, zout] = ode15s(@(tout, zout)HCL_Model(tout,zout,P),t,initial_conditions);
 state = zout';
 time = tout';
 
@@ -51,23 +51,27 @@ C = P.c_20 + P.alpha_21.*x + P.alpha_22.*y + P.beta_21.*x.^2 + P.beta_22.*x.*y +
 
 %% Plot Model Output
 
-% Circadian Drive
+% Auxillary Variable
 figure()
 plot(time, x, 'LineWidth',2); 
-xline(23*60*60)
-xline(7*60*60)
-title('Circadian Drive (x)');
+% xline(23*60*60)
+% xline(7*60*60)
+% xline(7*60*60 + 86400)
+% xline(23*60*60 + 86400)
+title('Auxillary Variable (x)');
 xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
 
 
-% Auxillary Variable
+% Circadian Variable
 figure()
 plot(time, y, 'LineWidth',2);  
-xline(23*60*60)
-xline(7*60*60)
-title('Circadian Drive Auxillary Variable (y)');
+% xline(23*60*60)
+% xline(7*60*60)
+% xline(7*60*60 + 86400)
+% xline(23*60*60 + 86400)
+title('Circadian Variable (y)');
 xlabel('Time (secs)');
 ax=gca;
 ax.FontSize = 15;
@@ -85,8 +89,10 @@ ax.FontSize = 15;
 % Proportion of Active Photoreceptors
 figure()
 plot(time, n, 'LineWidth',2); 
-xline(23*60*60)
-xline(7*60*60)
+% xline(23*60*60)
+% xline(7*60*60)
+% xline(7*60*60 + 86400)
+% xline(23*60*60 + 86400)
 title('Proportion of Active Photoreceptors (n)');
 xlabel('Time (secs)');
 ax=gca;
@@ -96,8 +102,10 @@ ax.FontSize = 15;
 % Circadian wake propensity rhythm
 figure()
 plot(time, C, 'LineWidth',2); 
-xline(23*60*60)
-xline(7*60*60)
+%xline(7*60*60)
+%xline(23*60*60)
+%xline(7*60*60 + 86400)
+%xline(23*60*60 + 86400)
 title('Circadian wake propensity rhythm (C)');
 xlabel('Time (secs)');
 ax=gca;
