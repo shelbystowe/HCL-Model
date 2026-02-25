@@ -17,7 +17,8 @@ clc
 
 % Set simulation duration
 n = 1; % days
-t = [0 24*n*3600]; % seconds
+%t = [0 24*n*3600]; % seconds
+t = [0 24*n]; % hours
 
 % Set parameter values 
 P = Set_Parameters; 
@@ -59,7 +60,7 @@ plot(time, x, 'LineWidth',2);
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
 title('Auxillary Variable (x)');
-xlabel('Time (secs)');
+xlabel('Time (hrs)');
 ax=gca;
 ax.FontSize = 15;
 
@@ -72,7 +73,7 @@ plot(time, y, 'LineWidth',2);
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
 title('Circadian Variable (y)');
-xlabel('Time (secs)');
+xlabel('Time (hrs)');
 ax=gca;
 ax.FontSize = 15;
 
@@ -94,7 +95,7 @@ plot(time, n, 'LineWidth',2);
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
 title('Proportion of Active Photoreceptors (n)');
-xlabel('Time (secs)');
+xlabel('Time (hrs)');
 ax=gca;
 ax.FontSize = 15;
 
@@ -107,6 +108,6 @@ plot(time, C, 'LineWidth',2);
 %xline(7*60*60 + 86400)
 %xline(23*60*60 + 86400)
 title('Circadian wake propensity rhythm (C)');
-xlabel('Time (secs)');
+xlabel('Time (hrs)');
 ax=gca;
 ax.FontSize = 15;

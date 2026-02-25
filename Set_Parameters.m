@@ -1,22 +1,25 @@
 function P = Set_Parameters()
 
 % SET INITIAL CONDITIONS
-P.x_init = 0.7624; % Circadian drive 
-P.y_init = -0.6869; % Auxilary variable 
-P.n_init = 0.6757; % Proportion of activated photoreceptors 
+P.x_init = -0.2140; % Circadian drive 
+P.y_init = 2.0192; % Auxilary variable 
+P.n_init = 0.6758; % Proportion of activated photoreceptors 
 
 % SET PARAMETER VALUES
 % Circadian oscillator parameters
-P.alpha0  = 0.16/60; % modulates how light affects the fraction of activated photoreceptors
+%P.alpha0  = 0.16/60; % modulates how light affects the fraction of activated photoreceptors
+P.alpha0  = 0.16*60;
 P.I0      = 9500; % scaling factor
 P.p       = 0.6; % modulates the steepness of the dose response curve to light
 P.G       = 19.9; % modulates the strength of the effect of light
 P.b       = 0.4; % modulates timing of maximum light sensitivity 
 P.gamma   = 0.23; % stiffness parameter
-P.kappa   = (12/pi)*60*60; % time scaling factor
+%P.kappa   = (12/pi)*60*60; % time scaling factor
+P.kappa   = (12/pi);
 P.f       = 0.99669; % correction factor 
 P.k       = 0.55; % modulates shape of velocity response curve
-P.beta    = 0.013/60; % decay rate of photoreceptor activation
+%P.beta    = 0.013/60; % decay rate of photoreceptor activation
+P.beta    = 0.013*60;
 P.tau_c   = 24.2; % Circadian period
 
 % Circadian wake propensity rhythm parameters 

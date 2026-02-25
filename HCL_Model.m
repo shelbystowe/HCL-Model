@@ -16,7 +16,8 @@ n = Z(3); % proportion of activated photoreceptors
 
 % Build the light schedule
 for i=1:length(t)
-    if mod(t,24*60*60)>=23*60*60 || mod(t,24*60*60)<=7*60*60
+    %if mod(t,24*60*60)>=23*60*60 || mod(t,24*60*60)<=7*60*60
+    if mod(t,24)>=23 || mod(t,24)<=7
         I=P.day;
         S = 0;
     else
