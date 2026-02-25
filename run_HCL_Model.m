@@ -16,7 +16,7 @@ close all
 clc
 
 % Set simulation duration
-n = 1; % days
+n = 2; % days
 %t = [0 24*n*3600]; % seconds
 t = [0 24*n]; % hours
 
@@ -28,18 +28,18 @@ P = Set_Parameters;
 
 initial_conditions =  [P.x_init; P.y_init; P.n_init];
 
-% myODEfunction = @(t,Z)HCL_Model(t,Z,P);
-% sol = ode45(myODEfunction, t, initial_conditions);
+myODEfunction = @(t,Z)HCL_Model(t,Z,P);
+sol = ode15s(myODEfunction, t, initial_conditions);
 
-% dt = 1/120;
-% tStart = sol.x(1);
-% tFinal = sol.x(end);
-% time = linspace(tStart,tFinal,round((tFinal-tStart)/dt));
-% state = deval(sol,time);
+dt = 1/120;
+tStart = sol.x(1);
+tFinal = sol.x(end);
+time = linspace(tStart,tFinal,round((tFinal-tStart)/dt));
+state = deval(sol,time);
 
-[tout, zout] = ode15s(@(tout, zout)HCL_Model(tout,zout,P),t,initial_conditions);
-state = zout';
-time = tout';
+% [tout, zout] = ode15s(@(tout, zout)HCL_Model(tout,zout,P),t,initial_conditions);
+% state = zout';
+% time = tout';
 
 %% Assign state variable names to solution ouptuts
 
@@ -59,6 +59,8 @@ plot(time, x, 'LineWidth',2);
 % xline(7*60*60)
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
+xline(7)
+xline(23)
 title('Auxillary Variable (x)');
 xlabel('Time (hrs)');
 ax=gca;
@@ -72,6 +74,8 @@ plot(time, y, 'LineWidth',2);
 % xline(7*60*60)
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
+xline(7)
+xline(23)
 title('Circadian Variable (y)');
 xlabel('Time (hrs)');
 ax=gca;
@@ -94,6 +98,8 @@ plot(time, n, 'LineWidth',2);
 % xline(7*60*60)
 % xline(7*60*60 + 86400)
 % xline(23*60*60 + 86400)
+xline(7)
+xline(23)
 title('Proportion of Active Photoreceptors (n)');
 xlabel('Time (hrs)');
 ax=gca;
@@ -107,7 +113,51 @@ plot(time, C, 'LineWidth',2);
 %xline(23*60*60)
 %xline(7*60*60 + 86400)
 %xline(23*60*60 + 86400)
+xline(7)
+xline(23)
 title('Circadian wake propensity rhythm (C)');
 xlabel('Time (hrs)');
+ax=gca;
+ax.FontSize = 15;
+
+%% For Fun Plots!
+
+% yC-phase plane
+figure()
+plot(C, y, 'LineWidth',2);  
+title('Circadian Drive Cy-plane');
+xlabel('C');
+ylabel('y');
+grid on;
+ax=gca;
+ax.FontSize = 15;
+
+figure()
+plot3(x,y,n)
+title('Circadian Drive Phase Space');
+xlabel('x');
+ylabel('y');
+zlabel('n');
+grid on;
+ax=gca;
+ax.FontSize = 15;
+
+figure()
+plot3(x,y,C)
+title('Circadian x-y-C');
+xlabel('x');
+ylabel('y');
+zlabel('C');
+grid on;
+ax=gca;
+ax.FontSize = 15;
+
+figure()
+plot3(x,n,C)
+title('Circadian x-n-C');
+xlabel('x');
+ylabel('n');
+zlabel('C');
+grid on;
 ax=gca;
 ax.FontSize = 15;
